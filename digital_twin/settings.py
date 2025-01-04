@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+# from decouple import config
+
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'user',
+    'message',
 ]
 
 MIDDLEWARE = [
@@ -75,10 +84,15 @@ WSGI_APPLICATION = 'digital_twin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DATABASE_NAME'),  
+        'USER': os.getenv('DATABASE_USER'), 
+        'PASSWORD': os.getenv('DTABASE_PASSWORD'),   
+        'HOST': os.getenv('DATABASE_HOST'),         
+        'PORT': os.getenv('DATABASE_PORT'),
     }
 }
+
 
 
 # Password validation
@@ -121,3 +135,28 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': os.getenv("REDIS_URL"),
+    }
+}
+
+CACHE_ALIAS = "default"
+
+LOGS_REDIS = {
+    "HOST": os.getenv('REDIS_HOST'),
+    "PORT": os.getenv('REDIS_PORT'),
+    "PASSWORD": os.getenv('REDIS_PASSWORD', None),
+    "DEFAULT_TIMEOUT": 300,
+}
+
+
