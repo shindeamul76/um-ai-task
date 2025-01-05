@@ -4,7 +4,7 @@ from rest_framework import status
 from sqlalchemy.orm import Session
 from utils.database import get_db
 from models.models_sqlalchemy import User, Questions, UserQuestions
-from .serializers import UserSerializer, QuestionSerializer, Questionnaire
+from .serializers import UserSerializer, QuestionSerializer, Questionnaire, UpdateUserSerializer
 import random
 
 
@@ -19,14 +19,28 @@ class UserCreateView(APIView):
             serializer = UserSerializer(data=request.data)
             if serializer.is_valid():
                 data = serializer.validated_data
+                
+                # Check if phone_number already exists
+                existing_user = db.query(User).filter_by(phone_number=data['phone_number']).first()
+                if existing_user:
+                    return Response(
+                        {"error": "A user with this phone number already exists."},
+                        status=status.HTTP_400_BAD_REQUEST
+                    )
+                
+                # Proceed with user creation
                 new_user = User(**data) 
                 db.add(new_user)  
                 db.commit()  
                 db.refresh(new_user)  
                 return Response(UserSerializer(new_user).data, status=status.HTTP_201_CREATED)
+            
+            # If validation fails
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         finally:
-            db.close()  
+            db.close()   
+
+
 
 class UserListView(APIView):
     """
@@ -63,14 +77,14 @@ class UserDetailView(APIView):
     PUT /users/<user_id>/
     Update a user by ID.
     """
-    def put(self, request, user_id):
+    def patch(self, request, user_id):
         db = next(get_db())  # Get the session from the generator
         try:
             user = db.query(User).filter(User.id == user_id).first()
             if not user:
                 return Response({"error": "User not found"}, status=status.HTTP_404_NOT_FOUND)
 
-            serializer = UserSerializer(user, data=request.data)
+            serializer = UpdateUserSerializer(user, data=request.data)
             if serializer.is_valid():
                 for key, value in serializer.validated_data.items():
                     setattr(user, key, value)
