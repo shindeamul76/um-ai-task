@@ -21,3 +21,14 @@ class QuestionnaireSerializer(serializers.Serializer):
     user_id = serializers.IntegerField(required=True)
     question_id = serializers.IntegerField(required=True)
     answer = serializers.CharField(required=True)
+
+class UpdateUserSerializer(serializers.Serializer):
+    id = serializers.IntegerField(read_only=True)
+    name = serializers.CharField(required=False)
+    phone_number = serializers.CharField(required=False)
+    age = serializers.IntegerField(required=False)
+    sex = serializers.CharField(required=False)
+    location = serializers.CharField(required=False)
+    job_title = serializers.CharField(required=False)
+    company_name = serializers.CharField(required=False)
+    education = serializers.CharField(required=False)
