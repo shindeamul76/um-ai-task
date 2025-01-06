@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "c6ebc249-e852-4a17-9b11-9ee88739a4ff",
+		"name": "um-ai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23915822"
+	},
+	"item": [
+		{
+			"name": "OnboardUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"John Doe\",\n  \"phone_number\": \"1234567890\",\n  \"age\": 30,\n  \"sex\": \"Male\",\n  \"location\": \"New York\",\n  \"job_title\": \"Software Engineer\",\n  \"company_name\": \"Tech Corp\",\n  \"education\": \"Master's Degree\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/create/"
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/"
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/1/questions"
+			},
+			"response": []
+		},
+		{
+			"name": "SendAndReceiveMessage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// {\n//   \"sender_id\": 1,\n//   \"recipient_id\": 3,\n//   \"content\": \"Hey, how are you doing?\"\n// }\n\n{\n    \"sender_id\": 1,\n    \"recipient_id\": 3,\n    \"content\": \"Manali, Kashmir and most i like is chikKmanguluru\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/messages/"
+			},
+			"response": []
+		},
+		{
+			"name": "FetchRandomQuestions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/3/questions"
+			},
+			"response": []
+		},
+		{
+			"name": "SubmitQuestiosnsResponses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"question_id\": 13,\n        \"answer\": \"My favorite book is 'To Kill a Mockingbird', and my favorite movie is 'The Shawshank Redemption.'\"\n    },\n    {\n        \"question_id\": 4,\n        \"answer\": \"I like to start a conversation by asking a thoughtful question or sharing a fun fact to break the ice.\"\n    },\n    {\n        \"question_id\": 6,\n        \"answer\": \"I enjoy reading, hiking, and trying out new recipes in the kitchen. I also have a passion for photography and exploring nature.\"\n    },\n    {\n        \"question_id\": 1,\n        \"answer\": \"I usually start with my name, a smile, and a handshake. Then I share a bit about myself, like my profession or hobbies, to find common ground.\"\n    },\n    {\n        \"question_id\": 5,\n        \"answer\": \"I respond with a warm 'Thank you!' and sometimes add something positive about the person who complimented me.\"\n    },\n    {\n        \"question_id\": 10,\n        \"answer\": \"My favorite travel destination is Switzerland for its breathtaking landscapes and serene atmosphere.\"\n    },\n    {\n        \"question_id\": 3,\n        \"answer\": \"Thank you so much for the offer, but I’ll have to pass this time. I truly appreciate you thinking of me.\"\n    },\n    {\n        \"question_id\": 14,\n        \"answer\": \"The most important thing I'm looking for in a relationship is trust and mutual respect.\"\n    },\n    {\n        \"question_id\": 9,\n        \"answer\": \"I usually spend my weekends relaxing, reading, and catching up with friends or family.\"\n    },\n    {\n        \"question_id\": 11,\n        \"answer\": \"My long-term goal is to create a meaningful impact in my career while also maintaining a balanced and fulfilling personal life.\"\n    },\n    {\n        \"question_id\": 8,\n        \"answer\": \"I look for kindness, honesty, and a good sense of humor in a partner.\"\n    },\n    {\n        \"question_id\": 15,\n        \"answer\": \"I like to spend my free time reading books, watching movies, or exploring nature trails.\"\n    },\n    {\n        \"question_id\": 7,\n        \"answer\": \"My idea of a perfect date is a quiet dinner followed by a walk under the stars.\"\n    },\n    {\n        \"question_id\": 12,\n        \"answer\": \"I handle conflicts by calmly discussing the issue and trying to find a resolution that works for both sides.\"\n    },\n    {\n        \"question_id\": 2,\n        \"answer\": \"I enjoy talking to people who are open-minded, positive, and have interesting stories to share.\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/3/responses/"
+			},
+			"response": []
+		},
+		{
+			"name": "UserHistory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "// {\n//   \"sender_id\": 1,\n//   \"recipient_id\": 3,\n//   \"content\": \"Hey, how are you doing?\"\n// }\n\n{\n    \"sender_id\": 1,\n    \"recipient_id\": 3,\n    \"content\": \"That sounds great! What book are you reading, and what kind of recipes have you been experimenting with? I’d love to hear more!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/messages/3"
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/4/"
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUser",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n  \"age\": 26\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{local}}/api/v1/user/5/"
+			},
+			"response": []
+		}
+	]
+}
