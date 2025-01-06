@@ -25,7 +25,7 @@
 
 ## About the Project
 
-# Role-Based Access Control (RBAC) System for Your Applications
+# UrbanMatch AI Digital Twin
 UrbanMatch is a platform designed to connect real people with real places, fostering genuine connections. Our project utilizes OpenAI's API to create a digital twin that mirrors the real world, enhancing user experiences and interactions.
 
 UrbanMatch leverages cutting-edge technology to provide users with accurate and up-to-date information about various locations and events. By integrating advanced algorithms, data analytics, and OpenAI's powerful models, we ensure that users receive personalized recommendations and insights.
