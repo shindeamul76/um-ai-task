@@ -127,7 +127,7 @@ To use the application, follow these steps:
 2. I have used the redis for caching the user's questionnaire answers.
 3. I have also Keeping the cnversion history in the redis to keep track of the conversation history.
 
-# Note: -  Calling the message send and receive api will take some time to respond as it is calling the open ai api and the conversation history is being stored in the redis cache and the questionnaire answers are being cached in the redis so it will take around 4-5 seconds to respond.
+# Note: -  Calling the message send and receive api will take some time to respond as it is calling the open ai api and the conversation history is being stored in the redis cache and the questionnaire answers are being cached in the redis so it will take around 4-5 seconds to respond but we can improve this.
 
 # Note: - I have also attached the postman collection for the api calls in the postman folder.
 
